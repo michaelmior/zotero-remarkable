@@ -1,0 +1,15 @@
+{
+    "name": "michaelmior/zotero-remarkable",
+    "type": "project",
+    "require": {
+        "splitbrain/remarkable-api": "dev-master"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Mior",
+            "email": "michael.mior@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
