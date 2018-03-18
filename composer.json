@@ -2,7 +2,10 @@
     "name": "michaelmior/zotero-remarkable",
     "type": "project",
     "require": {
-        "splitbrain/remarkable-api": "dev-master"
+        "splitbrain/remarkable-api": "dev-master",
+        "guzzlehttp/guzzle": "^6.3@dev",
+        "chumper/zipper": "^1.0",
+        "vlucas/phpdotenv": "^2.5@dev"
     },
     "license": "MIT",
     "authors": [
