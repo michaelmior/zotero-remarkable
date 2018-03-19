@@ -15,11 +15,6 @@ $webdavUrl = getenv('WEBDAV_URL');
 $webdavAuth = getenv('WEBDAV_AUTH');
 $reMarkableToken = getenv('REMARKABLE_TOKEN');
 
-$api = new RemarkableAPI();
-$api->init($reMarkableToken);
-$fs = new RemarkableFS($api);
-$parent = $fs->mkdirP("/Zotero");
-
 // Zotero API client
 $client = new GuzzleHttp\Client([
     'base_uri' => 'https://api.zotero.org/users/'. $user . '/',
@@ -29,15 +24,6 @@ $client = new GuzzleHttp\Client([
         'Content-Type' => 'application/json'
     ]
 ]);
-
-// WebDAV HTTP client for downloading zips
-$webDAVClient = new GuzzleHttp\Client([
-    'base_uri' => $webdavUrl,
-    'auth' => explode(':', $webdavAuth)
-]);
-
-$zipper = new \Chumper\Zipper\Zipper;
-$tmp_dir = sys_get_temp_dir();
 
 echo "Fetching items from Zotero...\n";
 
@@ -61,6 +47,25 @@ foreach (json_decode($response->getBody()) as $item) {
 }
 
 echo count($to_process), " items found.\n";
+
+// Stop if there is nothing to do
+if (count($to_process) == 0) {
+    exit(0);
+}
+
+// WebDAV HTTP client for downloading zips
+$webDAVClient = new GuzzleHttp\Client([
+    'base_uri' => $webdavUrl,
+    'auth' => explode(':', $webdavAuth)
+]);
+
+$zipper = new \Chumper\Zipper\Zipper;
+$tmp_dir = sys_get_temp_dir();
+
+$api = new RemarkableAPI();
+$api->init($reMarkableToken);
+$fs = new RemarkableFS($api);
+$parent = $fs->mkdirP("/Zotero");
 
 $to_remove = [];
 foreach ($to_process as $item) {
