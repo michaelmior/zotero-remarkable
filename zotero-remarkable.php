@@ -39,6 +39,8 @@ $webDAVClient = new GuzzleHttp\Client([
 $zipper = new \Chumper\Zipper\Zipper;
 $tmp_dir = sys_get_temp_dir();
 
+echo "Fetching items from Zotero...\n";
+
 $to_process = [];
 $titles = [];
 $collections = [];
@@ -58,9 +60,11 @@ foreach (json_decode($response->getBody()) as $item) {
     }
 }
 
+echo count($to_process), " items found.\n";
+
 $to_remove = [];
 foreach ($to_process as $item) {
-    echo $item->data->key . "\n";
+    echo 'Processing item ', $item->data->key, "\n";
 
     // Store data for future removal
     $parentItem = $item->data->parentItem;
@@ -72,18 +76,24 @@ foreach ($to_process as $item) {
     ];
 
     // Download the zip file from WebDAV
+    echo "  Downloading zip...\n";
     $zip_file = $item->data->key . '.zip';
     $tmp_file = $tmp_dir . '/' . $zip_file;
     $zip_resp = $webDAVClient->get($zip_file, ['save_to' => $tmp_file]);
 
-    // Extract the PDF, upload to reMarkable and delete locally
+    // Extract the PDF
+    echo "  Extracting PDF...\n";
     $zip = $zipper->make($tmp_file);
     $content = $zip->getFileContent($item->data->filename);
+
+    // Upload to reMarkable and delete locally
+    echo "  Uploading to reMarkable...\n";
     $api->uploadPDF($content, $title, $parent);
     unlink($tmp_file);
 }
 
 // Remove the items from the collection
+echo "Removing items from Zotero collection...\n";
 foreach (array_chunk($to_remove, 50) as $remove_chunk) {
     $client->post('items', ['body' => json_encode($remove_chunk)]);
 }
