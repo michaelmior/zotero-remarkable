@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "def727adfb01782bc67b8faf004dbaba",
+    "content-hash": "65fdf9a566fe25a2bc5045c964cf415f",
     "packages": [
         {
             "name": "chumper/zipper",
@@ -1108,7 +1108,9 @@
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
             "time": "2018-02-22T06:28:18+00:00"
-        },
+        }
+    ],
+    "packages-dev": [
         {
             "name": "vlucas/phpdotenv",
             "version": "dev-master",
@@ -1160,7 +1162,6 @@
             "time": "2018-01-28T23:08:18+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {

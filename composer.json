@@ -4,8 +4,7 @@
     "require": {
         "splitbrain/remarkable-api": "dev-master",
         "guzzlehttp/guzzle": "^6.3@dev",
-        "chumper/zipper": "^1.0",
-        "vlucas/phpdotenv": "^2.5@dev"
+        "chumper/zipper": "^1.0"
     },
     "license": "MIT",
     "authors": [
@@ -14,5 +13,8 @@
             "email": "michael.mior@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require-dev": {
+        "vlucas/phpdotenv": "^2.5@dev"
+    }
 }

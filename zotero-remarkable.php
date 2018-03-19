@@ -5,8 +5,11 @@ require_once __DIR__ . '/vendor/autoload.php';
 use splitbrain\RemarkableAPI\RemarkableAPI;
 use splitbrain\RemarkableAPI\RemarkableFS;
 
-$dotenv = new Dotenv\Dotenv(__DIR__);
-$dotenv->load();
+// Load environment variables from .env if it exists
+if (file_exists(__DIR__ . '/.env')) {
+    $dotenv = new Dotenv\Dotenv(__DIR__);
+    $dotenv->load();
+}
 
 $user = getenv('ZOTERO_USER');
 $zoteroKey = getenv('ZOTERO_API_KEY');
