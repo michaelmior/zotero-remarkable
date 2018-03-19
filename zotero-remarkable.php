@@ -2,6 +2,19 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Throw an exception on notices and warnings
+// https://stackoverflow.com/a/10520540/123695
+function errHandle($errNo, $errStr, $errFile, $errLine) {
+    $msg = "$errStr in $errFile on line $errLine";
+    if ($errNo == E_NOTICE || $errNo == E_WARNING) {
+        throw new ErrorException($msg, $errNo);
+    } else {
+        echo $msg;
+    }
+}
+
+set_error_handler('errHandle');
+
 use splitbrain\RemarkableAPI\RemarkableAPI;
 use splitbrain\RemarkableAPI\RemarkableFS;
 
