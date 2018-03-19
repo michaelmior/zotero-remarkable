@@ -68,6 +68,10 @@ foreach ($to_process as $item) {
 
     // Store data for future removal
     $parentItem = $item->data->parentItem;
+    if (!array_key_exists($parentItem, $titles)) {
+        echo "  Skipping since no parent was found!\n";
+    }
+
     $title = $titles[$parentItem];
     $to_remove[] = [
         'key' => $parentItem,
