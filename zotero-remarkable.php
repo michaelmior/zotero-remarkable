@@ -101,5 +101,3 @@ echo "Removing items from Zotero collection...\n";
 foreach (array_chunk($to_remove, 50) as $remove_chunk) {
     $client->post('items', ['body' => json_encode($remove_chunk)]);
 }
-
-?>
