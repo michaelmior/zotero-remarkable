@@ -115,6 +115,8 @@ foreach ($to_process as $item) {
     echo "  Uploading to reMarkable...\n";
     $api->uploadPDF($content, $title, $parent);
     unlink($tmp_file);
+
+    echo '  Will update for deletion with ' . json_encode(end($to_remove)). "\n";
 }
 
 // Remove the items from the collection
