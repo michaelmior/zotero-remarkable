@@ -91,6 +91,7 @@ foreach ($to_process as $item) {
     $parentItem = $item->data->parentItem;
     if (!array_key_exists($parentItem, $titles)) {
         echo "  Skipping since no parent was found!\n";
+        continue;
     }
 
     $title = $titles[$parentItem];
