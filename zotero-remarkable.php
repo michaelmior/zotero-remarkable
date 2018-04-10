@@ -98,7 +98,7 @@ foreach ($to_process as $item) {
     $to_remove[] = [
         'key' => $parentItem,
         'version' => $versions[$parentItem],
-        'collections' => array_diff($collections[$parentItem], [$collection])
+        'collections' => array_values(array_diff($collections[$parentItem], [$collection]))
     ];
 
     // Download the zip file from WebDAV
