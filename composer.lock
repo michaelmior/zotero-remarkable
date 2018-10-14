@@ -897,12 +897,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/splitbrain/ReMarkableAPI.git",
-                "reference": "49063f5760813e34cfe69e484698e63a23402295"
+                "reference": "d33f4632b91bc2465ea8fcf0b2c41dcb675c8d12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/splitbrain/ReMarkableAPI/zipball/49063f5760813e34cfe69e484698e63a23402295",
-                "reference": "49063f5760813e34cfe69e484698e63a23402295",
+                "url": "https://api.github.com/repos/splitbrain/ReMarkableAPI/zipball/d33f4632b91bc2465ea8fcf0b2c41dcb675c8d12",
+                "reference": "d33f4632b91bc2465ea8fcf0b2c41dcb675c8d12",
                 "shasum": ""
             },
             "require": {
