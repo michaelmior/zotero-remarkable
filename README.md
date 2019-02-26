@@ -7,14 +7,15 @@ Run this script periodically to continually transfer uploaded files.
 Currently, the environment variables in the table below must be defined.
 You can use a [`.env` file](https://github.com/vlucas/phpdotenv) or define them any other way you choose.
 
-| Name              | Description                                        |
-|-------------------|----------------------------------------------------|
-|`ZOTERO_USER`      | Zotero user ID                                     |
-|`ZOTERO_API_KEY`   | Zotero API key                                     |
-|`ZOTERO_COLLECTION`| Collection key to use in Zotero                    |
-|`WEBDAV_URL`       | URL of the WebDAV server hosting your Zotero files |
-|`WEBDAV_AUTH`      | `username:password` for WebDAV authentication      |
-|`REMARKABLE_TOKEN` | reMarkable API token                               |
+| Name               | Description                                        |
+|--------------------|----------------------------------------------------|
+|`ZOTERO_USER`       | Zotero user ID                                     |
+|`ZOTERO_API_KEY`    | Zotero API key                                     |
+|`ZOTERO_COLLECTION` | Collection key to use in Zotero                    |
+|`WEBDAV_URL`        | URL of the WebDAV server hosting your Zotero files |
+|`WEBDAV_AUTH`       | `username:password` for WebDAV authentication      |
+|`REMARKABLE_TOKEN`  | reMarkable API token                               |
+|`REMARKABLE_FOLDER` | reMarkable destination folder (default /Zotero)   |
 
 Zotero user ID and API key can be found on the [settings](https://www.zotero.org/settings/keys) page.
 The Zotero collection key can be found as the last component in the URL path when browsing on the Web interface.

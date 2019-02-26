@@ -30,6 +30,13 @@ $collection = getenv('ZOTERO_COLLECTION');
 $webdavUrl = getenv('WEBDAV_URL');
 $webdavAuth = getenv('WEBDAV_AUTH');
 $reMarkableToken = getenv('REMARKABLE_TOKEN');
+$reMarkableFolder = getenv('REMARKABLE_FOLDER');
+if ($reMarkableFolder == FALSE) {
+    $reMarkableFolder = "/Zotero";
+}
+if ($reMarkableFolder[0] != "/") {
+    $reMarkableFolder = "/" . $reMarkableFolder;
+}
 
 // Zotero API client
 $client = new GuzzleHttp\Client([
@@ -81,7 +88,7 @@ $tmp_dir = sys_get_temp_dir();
 $api = new RemarkableAPI();
 $api->init($reMarkableToken);
 $fs = new RemarkableFS($api);
-$parent = $fs->mkdirP("/Zotero");
+$parent = $fs->mkdirP($reMarkableFolder);
 
 $to_remove = [];
 foreach ($to_process as $item) {
